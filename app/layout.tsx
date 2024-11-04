@@ -1,6 +1,7 @@
 // Core
 import StoreProvider from './StoreProvider';
 import localFont from 'next/font/local';
+import { ThemeProvider } from '@/components/theme-provider';
 // Style
 import '@/assets/styles/globals.css';
 // Types
@@ -24,9 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} antialiased font-sans`}>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </StoreProvider>
       </body>
     </html>
   );
