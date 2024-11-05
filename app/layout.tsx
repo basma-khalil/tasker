@@ -2,6 +2,9 @@
 import StoreProvider from './StoreProvider';
 import localFont from 'next/font/local';
 import { ThemeProvider } from '@/components/theme-provider';
+// Components
+import { SidebarProvider } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/layout/sidebar';
 // Style
 import '@/assets/styles/globals.css';
 // Types
@@ -34,7 +37,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <SidebarProvider>
+              <AppSidebar />
+              {children}
+            </SidebarProvider>
           </ThemeProvider>
         </StoreProvider>
       </body>
