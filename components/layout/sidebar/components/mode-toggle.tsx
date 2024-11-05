@@ -27,20 +27,20 @@ export default function ModeToggle() {
 
   return (
     <div className="relative flex items-center">
+      <input
+        id="toggle-mode"
+        type="checkbox"
+        checked={resolvedTheme === 'dark'}
+        onChange={handleToggle}
+        className="sr-only peer focus:outline-none"
+      />
       <label
         htmlFor="toggle-mode"
-        className={`relative inline-flex h-[32px] p-[6px] pr-[5px] items-center justify-between rounded-full bg-sidebar-foreground transition-all cursor-pointer
+        className={`relative inline-flex h-[32px] p-[6px] pr-[5px] items-center justify-between rounded-full bg-sidebar-foreground transition-all cursor-pointer peer-focus-visible:ring-1 peer-focus-visible:ring-ring
             ${open ? 'w-[60px]' : 'w-[32px]'}
           `}
-        aria-label="toggle dark mode"
       >
-        <input
-          id="toggle-mode"
-          type="checkbox"
-          checked={resolvedTheme === 'dark'}
-          onChange={handleToggle}
-          className="sr-only focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-        />
+        <span className="sr-only">toggle dark mode</span>
         <span
           className={`absolute top-[3px] left-[3px] size-[26px] rounded-full !transition-transform duration-600
               ${
