@@ -27,7 +27,7 @@ const items = [
   },
 ];
 
-export function AppSidebar() {
+export default function AppSidebar() {
   return (
     <Sidebar id="sidebar" collapsible="icon">
       {/* Logo */}
@@ -46,6 +46,7 @@ export function AppSidebar() {
             <House className="-m-0.5" />
             <span>home</span>
           </SidebarGroupLabel>
+
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
