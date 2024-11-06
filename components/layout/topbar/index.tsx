@@ -1,7 +1,10 @@
+// Core
+import { Suspense } from 'react';
 // Components
 import { Button } from '@/components/ui/button';
 import Search from '@/features/search/search';
 import SidebarTrigger from '@/components/layout/topbar/components/sidebar-trigger';
+import Loading from '@/app/loading';
 
 export default function Topbar() {
   // const handleOpenTaskForm = () => {
@@ -11,7 +14,9 @@ export default function Topbar() {
     <header className="flex gap-5 w-full p-5">
       <SidebarTrigger />
 
-      <Search />
+      <Suspense fallback={<Loading />}>
+        <Search />
+      </Suspense>
 
       <Button
         // onClick={handleOpenTaskForm}

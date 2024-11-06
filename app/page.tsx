@@ -1,6 +1,13 @@
+// Core
+import { Suspense } from 'react';
 // Components
 import Board from '@/components/board';
+import Loading from '@/app/loading';
 
 export default function Home() {
-  return <Board />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <Board />
+    </Suspense>
+  );
 }
