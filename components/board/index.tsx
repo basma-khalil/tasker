@@ -1,14 +1,22 @@
 'use client';
 
+// Core
+import { useSearchParams } from 'next/navigation';
 // Hooks
 import { useAppSelector } from '@/lib/store/hooks';
 // Components
 import TaskList from '@/components/board/components/task-list';
 // Data
-import {lists} from '@/data/lists'
+import { lists } from '@/data/lists';
 
 export default function Board() {
-  const tasks = useAppSelector((state) => state.task.tasks);
+  const allTasks = useAppSelector((state) => state.task.tasks);
+  const filteredTasks = useAppSelector((state) => state.filter.filteredTasks);
+  const searchParams = useSearchParams();
+
+  const searchQuery = searchParams.get('query');
+
+  const currentTasks = searchQuery ? filteredTasks : allTasks;
 
   return (
     <div className="w-full py-10">
@@ -16,7 +24,7 @@ export default function Board() {
         {lists.map((list) => (
           <TaskList
             key={list.id}
-            currentTasks={tasks}
+            currentTasks={currentTasks}
             listId={list.id}
             listTitle={list.title}
           />
@@ -24,7 +32,7 @@ export default function Board() {
       </ol>
 
       {/* No tasks message */}
-      {tasks.length === 0 && (
+      {currentTasks.length === 0 && (
         <div className="text-center capitalize">
           <p>no tasks found</p>
         </div>

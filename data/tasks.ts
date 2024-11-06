@@ -2,7 +2,7 @@ export const devTasks: TTasks = [
   {
     id: '1',
     date: '2024-11-05',
-    title: 'Ad nostrud quis duis Lorem',
+    title: 'Ad nostrud Lorem',
     description:
       'Consectetur ipsum nostrud culpa laboris Lorem ipsum proident est sunt cillum',
     priority: 'low',
@@ -12,7 +12,7 @@ export const devTasks: TTasks = [
   {
     id: '2',
     date: '2024-11-05',
-    title: 'Ad nostrud quis duis Lorem',
+    title: 'Ad nostrud quis duis',
     description:
       'Consectetur ipsum nostrud culpa laboris Lorem ipsum proident est sunt cillum',
     priority: 'high',
@@ -22,7 +22,7 @@ export const devTasks: TTasks = [
   {
     id: '3',
     date: '2024-11-05',
-    title: 'Ad nostrud quis duis Lorem',
+    title: 'Ad quis duis Lorem',
     description:
       'Consectetur ipsum nostrud culpa laboris Lorem ipsum proident est sunt cillum',
     priority: 'medium',
@@ -32,7 +32,7 @@ export const devTasks: TTasks = [
   {
     id: '4',
     date: '2024-11-05',
-    title: 'Ad nostrud quis duis Lorem',
+    title: 'Ad nostrud quis Lorem',
     description:
       'Consectetur ipsum nostrud culpa laboris Lorem ipsum proident est sunt cillum',
     priority: 'low',

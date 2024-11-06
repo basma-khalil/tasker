@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 // Reducers
 import taskReducer from '@/lib/store/features/task/taskSlice';
+import filterReducer from '@/lib/store/features/filter/filterSlice';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       task: taskReducer,
+      filter: filterReducer,
     },
   });
 };
