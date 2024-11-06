@@ -91,3 +91,32 @@
         @apply bg-background text-foreground;
     }
 }
+
+/* Custom styles */
+@layer base {
+    :root {
+        --list-heading: #583434;
+        --list-background: rgba(255, 227, 227, 0.35);
+    }
+
+    .dark {
+        --list-heading: #ffd9d9;
+        --list-background: rgba(255, 227, 227, 0.1);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

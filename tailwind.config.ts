@@ -64,6 +64,10 @@ const config: Config = {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+
+        // Custom colors
+        listHeading: 'var(--list-heading)',
+        listBackground: 'var(--list-background)',
       },
       borderRadius: {
         lg: 'var(--radius)',

@@ -9,3 +9,10 @@ interface ITask {
 }
 
 type TTasks = ITask[];
+
+interface IList {
+  id: ITask['state'];
+  title: string;
+}
+
+type TLists = IList[];
