@@ -18,7 +18,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex flex-col justify-center items-center gap-5 w-full h-full capitalize">
+    <div className="flex flex-col justify-center items-center gap-5 w-full h-[70vh] capitalize">
       <h2 className="text-2xl font-bold">something went wrong!</h2>
 
       <div className="flex justify-center gap-3 flex-wrap">
