@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import taskReducer from '@/lib/store/features/task/taskSlice';
 import filterReducer from '@/lib/store/features/filter/filterSlice';
 import taskDetailsReducer from '@/lib/store/features/modals/taskDetailsSlice';
+import formModalReducer from '@/lib/store/features/modals/formModalSlice';
 
 export const makeStore = () => {
   return configureStore({
@@ -10,6 +11,7 @@ export const makeStore = () => {
       task: taskReducer,
       filter: filterReducer,
       taskDetails: taskDetailsReducer,
+      formModal: formModalReducer,
     },
   });
 };

@@ -105,6 +105,10 @@
     }
 }
 
+.required::after {
+    @apply content-['_*'] text-destructive
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }

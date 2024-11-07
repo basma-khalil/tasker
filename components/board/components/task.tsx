@@ -4,8 +4,9 @@
 import Image from 'next/image';
 import { deleteTask } from '@/lib/store/features/task/taskSlice';
 import { closeTaskModal } from '@/lib/store/features/modals/taskDetailsSlice';
+import { openFormModal, setDefaultValues, setUpdateTask } from '@/lib/store/features/modals/formModalSlice';
 // Hooks
-import { useAppDispatch } from '@/lib/store/hooks';
+import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
 import { useToast } from '@/hooks/use-toast';
 // Components
 import {
@@ -33,13 +34,18 @@ interface TaskProps {
 }
 
 export default function Task({ task, isModal }: TaskProps) {
+  const isOpen = useAppSelector((state) => state.formModal.openFormModal);
   const dispatch = useAppDispatch();
   const { toast } = useToast();
   if (!task) return;
   const { id, date, image, title, description, priority } = task;
 
-  // const handleOpenTaskForm = () => {
-  // };
+  const handleOpenTaskForm = () => {
+    dispatch(setDefaultValues(task));
+    dispatch(setUpdateTask(true));
+    dispatch(openFormModal());
+    dispatch(closeTaskModal());
+  };
 
   const handleDeleteTask = () => {
     dispatch(deleteTask(id));
@@ -119,11 +125,11 @@ export default function Task({ task, isModal }: TaskProps) {
                 <TooltipTrigger asChild>
                   <Button
                     size={'icon'}
-                    // onClick={handleOpenTaskForm}
+                    onClick={handleOpenTaskForm}
                     aria-label="edit task"
                     aria-haspopup="dialog"
-                    // aria-expanded={}
-                    // aria-controls=""
+                    aria-expanded={isOpen}
+                    aria-controls="task-form"
                   >
                     <Pencil className="h-4 w-4" />
                   </Button>

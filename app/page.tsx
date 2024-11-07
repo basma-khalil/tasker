@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import Board from '@/components/board';
 import Loading from '@/app/loading';
 import TaskDetails from '@/components/modals/task-details';
+import FormModal from '@/components/modals/form-modal';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <Board />
       </Suspense>
       <TaskDetails />
+      <FormModal />
     </>
   );
 }

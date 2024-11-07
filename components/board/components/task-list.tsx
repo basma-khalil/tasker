@@ -1,3 +1,12 @@
+'use client';
+
+// Core
+import {
+  openFormModal,
+  setWithState,
+} from '@/lib/store/features/modals/formModalSlice';
+// Hooks
+import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
 // Components
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -25,10 +34,15 @@ export default function TaskList({
   listId,
   listTitle,
 }: TaskListProps) {
+  const isOpen = useAppSelector((state) => state.formModal.openFormModal);
+  const dispatch = useAppDispatch();
+
   const tasksInList = currentTasks.filter((task) => task.state === listId);
 
-  // const handleOpenTaskForm = () => {
-  // };
+  const handleOpenTaskForm = () => {
+    dispatch(setWithState(listId));
+    dispatch(openFormModal());
+  };
 
   return (
     <li className="w-full lg:w-[28%]">
@@ -53,11 +67,11 @@ export default function TaskList({
             <Tooltip>
               <TooltipTrigger
                 className="!mt-0 transition hover:opacity-70"
-                // onClick={handleOpenTaskForm}
+                onClick={handleOpenTaskForm}
                 aria-label="add new task"
                 aria-haspopup="dialog"
-                // aria-expanded={}
-                // aria-controls=""
+                aria-expanded={isOpen}
+                aria-controls="task-form"
                 data-state={listId}
               >
                 <Plus />
@@ -70,7 +84,7 @@ export default function TaskList({
         </CardHeader>
 
         {tasksInList.length !== 0 && (
-          <CardContent className="max-h-[550px] pt-6 bg-listBackground border rounded-xl shadow overflow-auto">
+          <CardContent className="max-h-[500px] pt-6 bg-listBackground border rounded-xl shadow overflow-auto">
             <ol className="flex flex-col gap-7">
               {tasksInList.map((task) => (
                 <TaskCard key={task.id} task={task} />
