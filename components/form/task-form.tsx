@@ -18,6 +18,10 @@ import PriorityField from '@/components/form/components/priority-field';
 import StateField from '@/components/form/components/state-field';
 import TitleField from '@/components/form/components/titleI-field';
 import ImageField from '@/components/form/components/image-field';
+// Data
+import { priorities, states } from '@/data/task';
+
+const defaultImg = '/images/task-placeholder.jpg';
 
 export default function TaskForm() {
   const initValues = useAppSelector((state) => state.formModal.defaultValues);
@@ -53,15 +57,15 @@ export default function TaskForm() {
     description: yup.string(),
     priority: yup
       .string()
-      .oneOf(['low', 'medium', 'high'])
+      .oneOf(priorities)
       .required('Please select a priority for your task'),
     state: yup
       .string()
-      .oneOf(['todo', 'doing', 'done'])
+      .oneOf(states)
       .required('Please select a state for your task'),
     image: yup
       .string()
-      .default('/images/task-placeholder.jpg')
+      .default(defaultImg)
       .transform((value) => (value === '' ? undefined : value)),
   });
 

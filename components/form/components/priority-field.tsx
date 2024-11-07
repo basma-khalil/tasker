@@ -32,8 +32,8 @@ export default function PriorityField({ control }: PriorityFieldProps) {
 
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
-              <SelectTrigger>
-                <SelectValue placeholder="Select the task priority" />
+              <SelectTrigger className="capitalize">
+                <SelectValue placeholder="select the task priority" />
               </SelectTrigger>
             </FormControl>
 
@@ -41,8 +41,8 @@ export default function PriorityField({ control }: PriorityFieldProps) {
               {priorities.map((priority) => (
                 <SelectItem
                   key={priority}
-                  className="capitalize"
                   value={priority}
+                  className="capitalize"
                 >
                   {priority}
                 </SelectItem>

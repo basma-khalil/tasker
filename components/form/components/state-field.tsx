@@ -32,8 +32,8 @@ export default function StateField({ control }: StateFieldProps) {
 
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
-              <SelectTrigger>
-                <SelectValue placeholder="Select the task state" />
+              <SelectTrigger className="capitalize">
+                <SelectValue placeholder="select the task state" />
               </SelectTrigger>
             </FormControl>
 
@@ -41,7 +41,7 @@ export default function StateField({ control }: StateFieldProps) {
               {states.map((state) => (
                 <SelectItem
                   key={state.id}
-                  value={state.title}
+                  value={state.id}
                   className="capitalize"
                 >
                   {state.title}
