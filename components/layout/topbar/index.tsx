@@ -12,7 +12,7 @@ import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
 import { Button } from '@/components/ui/button';
 import Search from '@/features/search/search';
 import SidebarTrigger from '@/components/layout/topbar/components/sidebar-trigger';
-import Loading from '@/app/loading';
+import SkeletonInput from '@/features/loader/skeleton-input';
 
 export default function Topbar() {
   const isOpen = useAppSelector((state) => state.formModal.openFormModal);
@@ -27,7 +27,7 @@ export default function Topbar() {
     <header className="flex gap-5 w-full p-5">
       <SidebarTrigger />
 
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<SkeletonInput />}>
         <Search />
       </Suspense>
 
