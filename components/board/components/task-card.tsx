@@ -24,21 +24,22 @@ export default function TaskCard({ task }: TaskCardProps) {
   };
 
   return (
-    <li
-      className="transition-opacity cursor-pointer hover:opacity-80"
-      onClick={handleOpenTaskDetails}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          handleOpenTaskDetails();
-        }
-      }}
-      role="button"
-      tabIndex={0}
-      aria-haspopup="dialog"
-      aria-expanded={isOpen}
-      aria-controls="task-details"
-    >
-      <Task task={task} isModal={false} />
+    <li className="transition-opacity cursor-pointer hover:opacity-80">
+      <div
+        onClick={handleOpenTaskDetails}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            handleOpenTaskDetails();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
+        aria-controls="task-details"
+      >
+        <Task task={task} isModal={false} />
+      </div>
     </li>
   );
 }
