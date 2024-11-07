@@ -18,18 +18,27 @@ export const filterSlice = createSlice({
       action: PayloadAction<{
         tasks: TTasks;
         searchQuery: string;
+        priorityQuery: ITask['priority'] | '';
       }>
     ) => {
-      const { tasks, searchQuery } = action.payload;
+      const { tasks, searchQuery, priorityQuery } = action.payload;
 
-      if (!searchQuery) {
+      if (!searchQuery && !priorityQuery) {
         state.filteredTasks = tasks;
         return;
       }
 
-      state.filteredTasks = tasks.filter((task) =>
-        task.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      state.filteredTasks = tasks.filter((task) => {
+        const filteredBySearch = task.title
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+
+        const filteredByPriority = priorityQuery
+          ? task.priority === priorityQuery
+          : true;
+
+        return filteredBySearch && filteredByPriority;
+      });
     },
   },
 });

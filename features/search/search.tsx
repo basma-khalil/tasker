@@ -1,12 +1,12 @@
 'use client';
 
 //Core
-import { useEffect, useMemo, useState, type ChangeEventHandler } from 'react';
-import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
+import { useState, useMemo, type ChangeEventHandler } from 'react';
 import { useSearchParams } from 'next/navigation';
 import debounce from 'lodash.debounce';
 import { setFilteredTasks } from '@/lib/store/features/filter/filterSlice';
 // Hooks
+import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import useUpdateUrlParams from '@/hooks/use-update-url-params';
 // Components
 import { Input } from '@/components/ui/input';
@@ -18,15 +18,16 @@ export default function Search() {
   const searchParams = useSearchParams();
   const updateUrlParams = useUpdateUrlParams();
   const initQuery = searchParams.get('query') || '';
+  const priorityQuery = searchParams.get('priority') as ITask['priority'] || '';
 
   const [searchQuery, setSearchQuery] = useState(initQuery);
 
   const debouncedSearch = useMemo(() => {
     const searchFilter = (query: string) => {
-      dispatch(setFilteredTasks({ tasks, searchQuery: query }));
+      dispatch(setFilteredTasks({ tasks, searchQuery: query, priorityQuery }));
     };
     return debounce(searchFilter, 300);
-  }, [dispatch, tasks]);
+  }, [dispatch, priorityQuery, tasks]);
 
   // Search when input change
   const handleSearch: ChangeEventHandler<HTMLInputElement> = (evt) => {
@@ -35,17 +36,6 @@ export default function Search() {
     setSearchQuery(query);
     debouncedSearch(query);
   };
-
-  // Search based on initial URL query
-  useEffect(() => {
-    let unmounted = false;
-    if (!unmounted && searchQuery) {
-      dispatch(setFilteredTasks({ tasks, searchQuery }));
-    }
-    return () => {
-      unmounted = true;
-    };
-  }, [dispatch, searchQuery, tasks]);
 
   return (
     <div className="w-full">
