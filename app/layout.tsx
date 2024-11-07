@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import AppSidebar from '@/components/layout/sidebar';
 import Topbar from '@/components/layout/topbar';
+import { Toaster } from '@/components/ui/toaster';
 // Style
 import '@/assets/styles/globals.css';
 // Types
@@ -45,6 +46,7 @@ export default function RootLayout({
                 {children}
               </main>
             </SidebarProvider>
+            <Toaster />
           </ThemeProvider>
         </StoreProvider>
       </body>

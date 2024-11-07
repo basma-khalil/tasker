@@ -2,9 +2,10 @@
 
 // Core
 import Image from 'next/image';
-import { useAppDispatch } from '@/lib/store/hooks';
 import { deleteTask } from '@/lib/store/features/task/taskSlice';
+import { closeTaskModal } from '@/lib/store/features/modals/taskDetailsSlice';
 // Hooks
+import { useAppDispatch } from '@/lib/store/hooks';
 import { useToast } from '@/hooks/use-toast';
 // Components
 import {
@@ -27,20 +28,22 @@ import Flag from '@/assets/icons/flag.svg';
 import { Clock, Pencil, Trash2 } from 'lucide-react';
 // Types
 interface TaskProps {
-  task: ITask;
+  task: ITask | null;
   isModal: boolean;
 }
 
 export default function Task({ task, isModal }: TaskProps) {
-  const { id, date, image, title, description, priority } = task;
   const dispatch = useAppDispatch();
   const { toast } = useToast();
+  if (!task) return;
+  const { id, date, image, title, description, priority } = task;
 
   // const handleOpenTaskForm = () => {
   // };
 
   const handleDeleteTask = () => {
     dispatch(deleteTask(id));
+    dispatch(closeTaskModal());
     toast({
       title: 'Your task has been deleted',
     });
