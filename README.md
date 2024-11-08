@@ -2,7 +2,7 @@
 
 A simple task management app
 
-![Admin dashboard responsive](preview/tasker-responsive.png)
+![Tasker responsive](preview/tasker-responsive.png)
 
 ## Table of Contents
 
@@ -30,6 +30,8 @@ A simple task management app
 This CRUD website is a [**Next.js**](https://nextjs.org/) app, bootstrapped with [**create-next-app**](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), built with [**TypeScript**](https://www.typescriptlang.org/ "Go to website"), [**Redux Toolkit**](https://redux-toolkit.js.org/ "Go to website"), [**Tailwind CSS**](https://tailwindcss.com/ "Go to website"), and [**Shadcn UI**](https://ui.shadcn.com/ "Go to website") to customize and style the app.
 
 ### Preview
+
+https://github.com/user-attachments/assets/5ec06d49-a330-4eec-b4ab-99c3fa62f2f6
 
 ### Built With
 
