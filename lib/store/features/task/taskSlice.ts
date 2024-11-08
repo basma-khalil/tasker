@@ -1,12 +1,12 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { devTasks } from '@/data/tasks';
+// import { devTasks } from '@/data/tasks';
 
 interface TaskState {
   tasks: TTasks;
 }
 
 const initialState: TaskState = {
-  tasks: devTasks,
+  tasks: [],
 };
 
 const taskSlice = createSlice({
@@ -27,6 +27,16 @@ const taskSlice = createSlice({
     deleteTask: (state, action: PayloadAction<string>) => {
       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
+    // updateTaskState: (
+    //   state,
+    //   action: PayloadAction<{ taskId: string; newState: ITask['state'] }>
+    // ) => {
+    //   const { taskId, newState } = action.payload;
+    //   const task = state.tasks.find((task) => task.id === taskId);
+    //   if (task) {
+    //     task.state = newState;
+    //   }
+    // },
   },
 });
 
