@@ -43,6 +43,8 @@ https://github.com/user-attachments/assets/5ec06d49-a330-4eec-b4ab-99c3fa62f2f6
 - Edit task
 - Delete task
 - View task
+- Kanban board
+- Drag-and-drop functionality for tasks
 - Search by task name
 - Filter by task state and priority
 - Validated form
@@ -112,4 +114,4 @@ This code is licensed under the **Attribution-NonCommercial-ShareAlike** License
 
 ## Demo
 
-For Demo of this template you can visit [tasker-theme.vercel.app](https://tasker-theme.vercel.app/ "Go to website")
+For Demo of this template you can visit [bk-tasker.vercel.app](https://bk-tasker.vercel.app/ "Go to website")
